@@ -38,20 +38,20 @@ const Login = (props) => {
     console.log('Effect Ran');
   });
 
-  // useEffect(() => {
-  //   const idendtifier = setTimeout(() => {
-  //     console.log('Checking Form Validity');
-  //     setFormIsValid(
-  //       emailState.value.includes('@') && enteredPassword.trim().length > 6
-  //     );
-  //   }, 500);
+  useEffect(() => {
+    const idendtifier = setTimeout(() => {
+      console.log('Checking Form Validity');
+      setFormIsValid(
+        emailState.isValid && passwordState.isValid
+      );
+    }, 500);
 
-  //   return () => {
-  //     console.log('Clean Up');
-  //     clearTimeout(idendtifier);
-  //   }
+    return () => {
+      console.log('Clean Up');
+      clearTimeout(idendtifier);
+    }
     
-  // },[emailState.value, enteredPassword]);
+  },[emailState, passwordState]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({type: 'USER_INPUT', val: event.target.value})
